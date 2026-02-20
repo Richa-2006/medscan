@@ -1,55 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>MedScan - Understand Your Medicine</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💊 MedScan</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>💊 MedScan</h1>
-        <p>Making Medicine Information Simple & Transparent</p>
-    </header>
+  <header>
+    <div class="header-content">
+      <h1>💊 MedScan</h1>
+      <p>Know exactly what's in your medicine</p>
+    </div>
+  </header>
 
-    <main>
-        <div class="search-box">
-            <input type="text" id="medicineInput" placeholder="Enter medicine name (e.g., Paracetamol)">
-            <button onclick="scanMedicine()">Scan</button>
+  <main>
+
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Enter medicine name (e.g. Tylenol, Aspirin, Ibuprofen)"
+        autocomplete="off"
+      />
+      <button id="searchBtn" onclick="handleSearch()">Analyze</button>
+    </div>
+
+    <div id="recentSearches" class="recent-searches"></div>
+
+    <div id="loading" class="hidden">
+      <div class="loading-spinner"></div>
+      <p>Searching FDA database...</p>
+    </div>
+
+    <div id="error" class="hidden">
+      <div class="error-box">
+        <h3>❌ Medicine Not Found</h3>
+        <p>We couldn't find this medicine in the FDA database. Try a different spelling or use the generic name (e.g. "acetaminophen" instead of "Tylenol").</p>
+      </div>
+    </div>
+
+    <div id="results" class="hidden">
+
+      <div class="medicine-header">
+        <div class="medicine-title">
+          <h2 id="medicineName"></h2>
+          <div id="safetyBadge" class="safety-badge"></div>
+        </div>
+        <p id="genericName" class="medicine-sub"></p>
+        <p id="manufacturer" class="medicine-sub"></p>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="card purpose">
+          <div class="card-icon">🎯</div>
+          <h3>What It Treats</h3>
+          <p id="purpose"></p>
         </div>
 
-        <div id="loading" class="hidden">
-            <div class="loader"></div>
-            <p>Analyzing medicine...</p>
+        <div class="card ingredients">
+          <div class="card-icon">🧪</div>
+          <h3>Active Ingredients</h3>
+          <p id="ingredients"></p>
         </div>
 
-        <div id="result" class="hidden">
-            <div class="card">
-                <h2>Description</h2>
-                <p id="description"></p>
-            </div>
-
-            <div class="card">
-                <h2>Warnings</h2>
-                <p id="warnings"></p>
-            </div>
-
-            <div class="card">
-                <h2>Interactions</h2>
-                <p id="interactions"></p>
-            </div>
-
-            <div class="card alert">
-                <h2>Allergy Alert</h2>
-                <p id="allergy"></p>
-            </div>
+        <div class="card side-effects">
+          <div class="card-icon">⚠️</div>
+          <h3>Side Effects</h3>
+          <p id="sideEffects"></p>
         </div>
-    </main>
 
-    <footer>
-        <p>© 2026 MedScan | Healthcare Transparency for Everyone</p>
-    </footer>
+        <div class="card warnings">
+          <div class="card-icon">🚨</div>
+          <h3>Warnings</h3>
+          <p id="warnings"></p>
+        </div>
 
-<script src="script.js"></script>
+        <div class="card interactions">
+          <div class="card-icon">💊</div>
+          <h3>Drug Interactions</h3>
+          <p id="interactions"></p>
+        </div>
+
+        <div class="card dosage">
+          <div class="card-icon">📏</div>
+          <h3>Dosage</h3>
+          <p id="dosage"></p>
+        </div>
+
+        <div class="card avoid">
+          <div class="card-icon">🚫</div>
+          <h3>Who Should Avoid</h3>
+          <p id="whoShouldAvoid"></p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>⚕️ MedScan is for informational purposes only. Data sourced from the US FDA database. Always consult a qualified healthcare professional before taking any medication.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
