@@ -339,3 +339,13 @@ mongoose.connect(process.env.MONGO_URI)
         });
     })
     .catch(err => console.error("❌ DB Error:", err.message));
+if (!process.env.MONGO_URI) {
+    console.error("❌ Error: MONGO_URI is not defined in .env file");
+    process.exit(1);
+}
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("✅ MongoDB connected");
+        // ... rest of your code
+    })
