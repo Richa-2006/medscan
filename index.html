@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedScan - Understand Your Medicine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>💊 MedScan</h1>
+        <p>Making Medicine Information Simple & Transparent</p>
+    </header>
+
+    <main>
+        <div class="search-box">
+            <input type="text" id="medicineInput" placeholder="Enter medicine name (e.g., Paracetamol)">
+            <button onclick="scanMedicine()">Scan</button>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="loader"></div>
+            <p>Analyzing medicine...</p>
+        </div>
+
+        <div id="result" class="hidden">
+            <div class="card">
+                <h2>Description</h2>
+                <p id="description"></p>
+            </div>
+
+            <div class="card">
+                <h2>Warnings</h2>
+                <p id="warnings"></p>
+            </div>
+
+            <div class="card">
+                <h2>Interactions</h2>
+                <p id="interactions"></p>
+            </div>
+
+            <div class="card alert">
+                <h2>Allergy Alert</h2>
+                <p id="allergy"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 MedScan | Healthcare Transparency for Everyone</p>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
